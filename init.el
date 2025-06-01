@@ -199,7 +199,7 @@
 (use-package lsp-mode
   :ensure t
   :init
-  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-keymap-prefix "C-l")
   :hook (
          (c-ts-mode . lsp)
 	 (c++-ts-mode . lsp)
