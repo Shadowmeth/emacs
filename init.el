@@ -13,6 +13,13 @@
 (eval-when-compile
   (require 'use-package))
 
+;; disable recent files
+(recentf-mode -1)
+
+;; disable the annoying bell beep
+(setq visibile-bell t)
+(setq ring-bell-function 'ignore)
+
 ;; no title bar
 (setq default-frame-alist '((undecorated . t)))
 
@@ -210,7 +217,7 @@
 	 )
   :config
   ;; semantic highlighting
-  ;; (setq lsp-semantic-tokens-enable t)
+  (setq lsp-semantic-tokens-enable t)
   ;; show code action before executing, even if only one
   (setq lsp-auto-execute-action nil)
   (setq lsp-clients-clangd-args

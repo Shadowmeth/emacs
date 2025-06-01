@@ -12,8 +12,8 @@
  '(package-selected-packages
    '(call-graph catppuccin-theme company-box counsel exec-path-from-shell
 		flx flycheck gruber-darker-theme lsp-ivy lsp-treemacs
-		lsp-ui nerd-icons rainbow-delimiters treesit-auto
-		yasnippet-snippets)))
+		lsp-ui magit nerd-icons rainbow-delimiters
+		treesit-auto yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
