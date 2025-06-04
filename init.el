@@ -189,7 +189,17 @@
   (setq company-selection-wrap-around t)
   )
 
+;; gui frontend for company - fixes line numbers disappearing
+;; and stays fast enough while providing documentation
+(use-package company-posframe
+  :ensure t
+  :config
+  (company-posframe-mode 1)
+  )
+
 ;; simple gui frontend for company - gives vscode looks
+;; but this is slow and no documentation
+;; better to use company-posframe
 ;; (use-package company-box
 ;;   :ensure t
 ;;   :hook (company-mode . company-box-mode)
@@ -259,5 +269,8 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode)
+  (setq c-ts-mode-indent-offset 4)
+  (setq c-ts-mode-indent-style 'linux)
   )
+
 
