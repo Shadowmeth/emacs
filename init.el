@@ -178,6 +178,46 @@
   (add-hook 'conf-mode-hook #'yas-minor-mode)
   )
 
+;; Flycheck - modern syntax checking
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'flycheck-mode)
+  (add-hook 'conf-mode-hook 'flycheck-mode)
+  )
+
+;; treesit - automatically installs the treesitter grammars
+(use-package treesit-auto
+  :ensure t
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode)
+  (setq c-ts-mode-indent-offset 4)
+  (setq c-ts-mode-indent-style 'linux)
+  )
+
+;; some GC configuration - lsp generate a lot of garbage
+(setq gc-cons-threshold 100000000)
+;; 4k is too low for lsps - lsp usually generate 800k to 3MB garbage per request
+(setq read-process-output-max (* 1024 1024 30)) ;; 30 MB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ;; company - complete anything (completion engine)
 ;;(use-package company
 ;;  :ensure t
@@ -207,10 +247,6 @@
 ;;   (setq company-box-doc-enable nil)
 ;;   )
 
-;; some GC configuration - lsp generate a lot of garbage
-(setq gc-cons-threshold 100000000)
-;; 4k is too low for lsps - lsp usually generate 800k to 3MB garbage per request
-(setq read-process-output-max (* 1024 1024 30)) ;; 30 MB
 
 ;; lsp client for emacs
 ;;(use-package lsp-mode
@@ -252,25 +288,3 @@
 ;;  :ensure t
 ;;  :commands lsp-treemacs-errors-list
 ;;  )
-
-;; Flycheck - modern syntax checking
-(use-package flycheck
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'flycheck-mode)
-  (add-hook 'conf-mode-hook 'flycheck-mode)
-  )
-
-;; treesit - automatically installs the treesitter grammars
-(use-package treesit-auto
-  :ensure t
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode)
-  (setq c-ts-mode-indent-offset 4)
-  (setq c-ts-mode-indent-style 'linux)
-  )
-
-
