@@ -179,23 +179,23 @@
   )
 
 ;; company - complete anything (completion engine)
-(use-package company
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'company-mode)
-  (add-hook 'conf-mode-hook 'company-mode)
-  (setq company-minimum-prefix-length 2)
-  (setq company-idle-delay 0.1)
-  (setq company-selection-wrap-around t)
-  )
+;;(use-package company
+;;  :ensure t
+;;  :config
+;;  (add-hook 'prog-mode-hook 'company-mode)
+;;  (add-hook 'conf-mode-hook 'company-mode)
+;;  (setq company-minimum-prefix-length 2)
+;;  (setq company-idle-delay 0.1)
+;;  (setq company-selection-wrap-around t)
+;;  )
 
 ;; gui frontend for company - fixes line numbers disappearing
 ;; and stays fast enough while providing documentation
-(use-package company-posframe
-  :ensure t
-  :config
-  (company-posframe-mode 1)
-  )
+;;(use-package company-posframe
+;;  :ensure t
+;;  :config
+;;  (company-posframe-mode 1)
+;;  )
 
 ;; simple gui frontend for company - gives vscode looks
 ;; but this is slow and no documentation
@@ -213,45 +213,45 @@
 (setq read-process-output-max (* 1024 1024 30)) ;; 30 MB
 
 ;; lsp client for emacs
-(use-package lsp-mode
-  :ensure t
-  :init
-  (setq lsp-keymap-prefix "C-l")
-  :hook (
-         (c-ts-mode . lsp)
-	 (c++-ts-mode . lsp)
-	 (typescript-ts-mode . lsp)
-	 (tsx-ts-mode . lsp)
-	 (cmake-ts-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration)
-	 )
-  :config
+;;(use-package lsp-mode
+;;  :ensure t
+;;  :init
+;;  (setq lsp-keymap-prefix "C-l")
+;;  :hook (
+;;         (c-ts-mode . lsp)
+;;	 (c++-ts-mode . lsp)
+;;	 (typescript-ts-mode . lsp)
+;;	 (tsx-ts-mode . lsp)
+;;	 (cmake-ts-mode . lsp)
+;;         (lsp-mode . lsp-enable-which-key-integration)
+;;	 )
+;;  :config
   ;; semantic highlighting
-  (setq lsp-semantic-tokens-enable t)
+;;  (setq lsp-semantic-tokens-enable t)
   ;; show code action before executing, even if only one
-  (setq lsp-auto-execute-action nil)
-  (setq lsp-clients-clangd-args
-    '("--header-insertion=never"))
-  :commands lsp
-  )
+;;  (setq lsp-auto-execute-action nil)
+;;  (setq lsp-clients-clangd-args
+;;    '("--header-insertion=never"))
+;;  :commands lsp
+;;  )
 ;; improves performance - we don't really need the logging
-(setq lsp-log-io nil)
+;;(setq lsp-log-io nil)
 
 ;; lsp ui - some nice ui modifications for lsp client
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode
-  )
+;;(use-package lsp-ui
+;;  :ensure t
+;;  :commands lsp-ui-mode
+;;  )
 
-(use-package lsp-ivy
-  :ensure t
-  :commands lsp-ivy-workspace-symbol
-  )
+;;(use-package lsp-ivy
+;;  :ensure t
+;;  :commands lsp-ivy-workspace-symbol
+;;  )
 
-(use-package lsp-treemacs
-  :ensure t
-  :commands lsp-treemacs-errors-list
-  )
+;;(use-package lsp-treemacs
+;;  :ensure t
+;;  :commands lsp-treemacs-errors-list
+;;  )
 
 ;; Flycheck - modern syntax checking
 (use-package flycheck
