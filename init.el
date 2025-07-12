@@ -253,8 +253,8 @@
   (define-key lsp-bridge-mode-map (kbd "C-l a") 'lsp-bridge-code-action)
   (define-key lsp-bridge-mode-map (kbd "C-l S") 'lsp-bridge-workspace-list-symbols)
   (define-key lsp-bridge-mode-map (kbd "C-l s") 'lsp-bridge-workspace-list-symbol-at-point)
-  (define-key lsp-bridge-mode-map (kbd "C-l [") 'lsp-bridge-diagnostic-jump-next)
-  (define-key lsp-bridge-mode-map (kbd "C-l ]") 'lsp-bridge-diagnostic-jump-prev)
+  (define-key lsp-bridge-mode-map (kbd "C-l [") 'lsp-bridge-diagnostic-jump-prev)
+  (define-key lsp-bridge-mode-map (kbd "C-l ]") 'lsp-bridge-diagnostic-jump-next)
   )
 
 ;;; init.el ends here
