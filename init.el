@@ -235,11 +235,6 @@
 (setq acm-backend-lsp-enable-auto-import f)
 (setq acm-enable-lsp-workspace-symbol t)
 (setq acm-doc-frame-max-lines 30)
-
-(setq acm-backend-lsp-candidate-min-length 2)
-(setq acm-backend-yas-candidate-min-length 2)
-(setq acm-backend-elisp-candidate-min-length 2)
-(setq acm-backend-search-file-words-candidate-min-length 2)
 (setq acm-backend-yas-candidates-number 10)
 
 (with-eval-after-load 'lsp-bridge
