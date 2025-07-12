@@ -186,6 +186,16 @@
   (add-hook 'conf-mode-hook 'flycheck-mode)
   )
 
+
+;; Language specific configs
+;; Rust
+(use-package flycheck-rust
+  :ensure t
+  )
+(with-eval-after-load 'rust-ts-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+
 ;; treesit - automatically installs the treesitter grammars
 (use-package treesit-auto
   :ensure t
@@ -234,7 +244,7 @@
 (setq acm-enable-capf t)
 (setq acm-backend-lsp-enable-auto-import f)
 (setq acm-enable-lsp-workspace-symbol t)
-(setq acm-doc-frame-max-lines 30)
+(setq acm-doc-frame-max-lines 40)
 (setq acm-backend-yas-candidates-number 10)
 
 (with-eval-after-load 'lsp-bridge
@@ -251,5 +261,6 @@
   (define-key lsp-bridge-mode-map (kbd "C-l [") 'lsp-bridge-diagnostic-jump-prev)
   (define-key lsp-bridge-mode-map (kbd "C-l ]") 'lsp-bridge-diagnostic-jump-next)
   )
+
 
 ;;; init.el ends here
