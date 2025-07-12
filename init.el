@@ -83,7 +83,7 @@
     (exec-path-from-shell-initialize))
   )
 ;; manually add path for NVM node
-(add-to-list 'exec-path "~/.nvm/versions/node/v23.10.0/bin/")
+(add-to-list 'exec-path "~/.nvm/versions/node/v24.4.0/bin/")
 (add-to-list 'exec-path "~/.local/bin/")
 
 ;; flx - needed by ivy for fuzzy scoring
@@ -199,6 +199,62 @@
   )
 
 ;; some GC configuration - lsp generate a lot of garbage
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 1000000)
 ;; 4k is too low for lsps - lsp usually generate 800k to 3MB garbage per request
 (setq read-process-output-max (* 1024 1024 30)) ;; 30 MB
+
+;; themes
+(use-package doom-themes
+  :ensure t
+  )
+
+;; markdown-mode is needed for lsp-bridge
+(use-package markdown-mode
+  :ensure t
+  )
+
+;; "smartly" go up the code structures
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region)
+  )
+
+;; disable touchpad / mouse permanently
+(use-package disable-mouse
+  :ensure t
+  :config
+  (global-disable-mouse-mode)
+  )
+
+;; lsp features ootb
+(add-to-list 'load-path "/home/syedkhs/.local/lsp-bridge")
+(require 'lsp-bridge)
+(global-lsp-bridge-mode)
+(setq lsp-bridge-enable-inlay-hint t)
+(setq acm-enable-capf t)
+(setq acm-backend-lsp-enable-auto-import f)
+(setq acm-enable-lsp-workspace-symbol t)
+(setq acm-doc-frame-max-lines 30)
+
+(setq acm-backend-lsp-candidate-min-length 2)
+(setq acm-backend-yas-candidate-min-length 2)
+(setq acm-backend-elisp-candidate-min-length 2)
+(setq acm-backend-search-file-words-candidate-min-length 2)
+(setq acm-backend-yas-candidates-number 10)
+
+(with-eval-after-load 'lsp-bridge
+  (define-key lsp-bridge-mode-map (kbd "C-l f") 'lsp-bridge-code-format)
+  (define-key lsp-bridge-mode-map (kbd "C-l d") 'lsp-bridge-find-def)
+  (define-key lsp-bridge-mode-map (kbd "C-l D") 'lsp-bridge-find-def-return)
+  (define-key lsp-bridge-mode-map (kbd "C-l p") 'lsp-bridge-peek)
+  (define-key lsp-bridge-mode-map (kbd "C-l r") 'lsp-bridge-rename)
+  (define-key lsp-bridge-mode-map (kbd "C-l k") 'lsp-bridge-popup-documentation)
+  (define-key lsp-bridge-mode-map (kbd "C-l K") 'lsp-bridge-show-documentation)
+  (define-key lsp-bridge-mode-map (kbd "C-l a") 'lsp-bridge-code-action)
+  (define-key lsp-bridge-mode-map (kbd "C-l S") 'lsp-bridge-workspace-list-symbols)
+  (define-key lsp-bridge-mode-map (kbd "C-l s") 'lsp-bridge-workspace-list-symbol-at-point)
+  (define-key lsp-bridge-mode-map (kbd "C-l [") 'lsp-bridge-diagnostic-jump-next)
+  (define-key lsp-bridge-mode-map (kbd "C-l ]") 'lsp-bridge-diagnostic-jump-prev)
+  )
+
+;;; init.el ends here
