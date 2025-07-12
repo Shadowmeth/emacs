@@ -186,16 +186,6 @@
   (add-hook 'conf-mode-hook 'flycheck-mode)
   )
 
-
-;; Language specific configs
-;; Rust
-(use-package flycheck-rust
-  :ensure t
-  )
-(with-eval-after-load 'rust-ts-mode
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-
-
 ;; treesit - automatically installs the treesitter grammars
 (use-package treesit-auto
   :ensure t
@@ -207,6 +197,15 @@
   (setq c-ts-mode-indent-offset 4)
   (setq c-ts-mode-indent-style 'linux)
   )
+
+;; Language specific configs
+;; Rust
+(use-package flycheck-rust
+  :ensure t
+  )
+(with-eval-after-load 'rust-ts-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 
 ;; some GC configuration - lsp generate a lot of garbage
 (setq gc-cons-threshold 1000000)
@@ -240,6 +239,7 @@
 (add-to-list 'load-path "/home/syedkhs/.local/lsp-bridge")
 (require 'lsp-bridge)
 (global-lsp-bridge-mode)
+
 (setq lsp-bridge-enable-inlay-hint t)
 (setq acm-enable-capf t)
 (setq acm-backend-lsp-enable-auto-import f)
@@ -261,6 +261,5 @@
   (define-key lsp-bridge-mode-map (kbd "C-l [") 'lsp-bridge-diagnostic-jump-prev)
   (define-key lsp-bridge-mode-map (kbd "C-l ]") 'lsp-bridge-diagnostic-jump-next)
   )
-
 
 ;;; init.el ends here
